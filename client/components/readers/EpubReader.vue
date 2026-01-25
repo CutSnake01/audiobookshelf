@@ -4,8 +4,11 @@
       <button type="button" aria-label="Previous page" class="w-24 max-w-24 h-full hidden sm:flex items-center overflow-x-hidden justify-center opacity-50 hover:opacity-100">
         <span v-if="hasPrev" class="material-symbols text-6xl" @mousedown.prevent @click="prev">chevron_left</span>
       </button>
-      <div id="frame" class="w-full" style="height: 80%">
+      <div id="frame" class="w-full relative" style="height: 80%">
         <div id="viewer"></div>
+        <!-- Tap zones for mobile navigation (visible only on small screens) -->
+        <div v-if="hasPrev" class="sm:hidden absolute left-0 top-0 w-1/4 h-full z-10 cursor-pointer" aria-label="Previous page" @click="prev"></div>
+        <div v-if="hasNext" class="sm:hidden absolute right-0 top-0 w-1/4 h-full z-10 cursor-pointer" aria-label="Next page" @click="next"></div>
       </div>
       <button type="button" aria-label="Next page" class="w-24 max-w-24 h-full hidden sm:flex items-center justify-center overflow-x-hidden opacity-50 hover:opacity-100">
         <span v-if="hasNext" class="material-symbols text-6xl" @mousedown.prevent @click="next">chevron_right</span>
